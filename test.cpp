@@ -1,34 +1,29 @@
-#include<stdio.h>
-int sumOfDigits(int num){
-    int sum = 0;
-    while(num>0){
-        sum += num%10;
-        num = num /10;
+#include <stdio.h>
+#include <string.h>
+
+// typedef ব্যবহার করে স্ট্রাকচার ডিফাইন করা
+typedef struct {
+    char name[50];
+    char phone[20];
+    int id;
+    int points;
+} Customer; // এখন টাইপটির নাম হলো শুধু 'Customer'
+
+int main() {
+    int N;
+    printf("Enter number of customers (N): ");
+    scanf("%d", &N);
+
+    // আগে লিখতাম: struct Customer customers[N];
+    // এখন লিখব শুধু:
+    Customer customers[N];
+
+    // বাকি সব কোড (ইনপুট, লুপ, সর্টিং) হুবহু আগের মতোই থাকবে...
+    for (int i = 0; i < N; i++) {
+        printf("Name: ");
+        scanf("%s", customers[i].name);
+        // ...
     }
-    return sum;
-}
 
-void nsort(int arr[], int n){
-    for(int i = 1; i<n; i++){
-        int key = arr[i];
-        int j = i -1;
-        while(j>=0 && sumOfDigits(arr[j])>sumOfDigits(key)){
-            arr[j+1]= arr[j];
-            j = j-1;
-        }
-        arr[j+1] = key;
-
-    }
-}
-
-
-int main(){
-    int n = 5;
-    int arr[] = {34, 23, 45, 12, 9};
-
-    nsort(arr, n);
-
-    for(int i = 0; i<n; i++){
-        printf("%d ", arr[i]);
-    }
+    return 0;
 }
